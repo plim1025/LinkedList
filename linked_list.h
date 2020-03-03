@@ -10,7 +10,6 @@ private:
 
 public:
     Linked_List();
-    Linked_List(int, Node*);
     ~Linked_List();
 
     int get_length();

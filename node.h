@@ -7,6 +7,7 @@ public:
     Node *next;
 
     Node();
+    Node(int);
     Node(int, Node*);
     ~Node();
 };
