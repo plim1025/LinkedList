@@ -7,6 +7,7 @@ class Linked_List {
 private:
     unsigned int length;
     Node *head;
+    Node *tail;
 
 public:
     Linked_List();
