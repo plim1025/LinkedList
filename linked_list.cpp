@@ -156,6 +156,26 @@ void Linked_List::mergeSort(int left, int right) {
     }
 }
 
+int Linked_List::maxIndex(Linked_List &list, int i, int j) {
+    if(i == j)
+        return i;
+    int k = maxIndex(list, i + 1, j);
+    return (list[i] > list[k]) ? i : k;
+}
+
+void Linked_List::selectionSort(int n, int index = 0) {
+    if(index == n)
+        return;
+    int k = maxIndex(*this, index, n - 1);
+    if(k != index)
+        swap_nodes(k, index);
+    selectionSort(n, index + 1);
+}
+
 void Linked_List::sort_ascending() {
     mergeSort(0, length - 1);
+}
+
+void Linked_List::sort_descending() {
+    selectionSort(length);
 }

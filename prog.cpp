@@ -4,15 +4,15 @@
 
 int main() {
     Linked_List linked_list;
-    linked_list.insert(4, 0);
-    linked_list.insert(5, 0);
-    linked_list.insert(3, 0);
-    linked_list.insert(2, 0);
-    linked_list.insert(1, 0);
-    linked_list.insert(0, 0);
-
-    linked_list.print();
-    linked_list.mergeSort(0, 5);
+    linked_list.push_front(1);
+    linked_list.push_front(3);
+    linked_list.push_front(2);
+    linked_list.push_front(61);
+    linked_list.push_front(76);
+    linked_list.push_front(3);
+    linked_list.push_front(1);
+    linked_list.push_front(4);
+    linked_list.sort_descending();
     linked_list.print();
     // linked_list.swap_nodes(0, 1);
     // linked_list.print();

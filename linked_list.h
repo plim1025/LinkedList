@@ -27,6 +27,8 @@ public:
     void num_primes();
     void merge(Linked_List&, int, int, int);
     void mergeSort(int, int);
+    int maxIndex(Linked_List&, int, int);
+    void selectionSort(int, int);
 };
 
 #endif
