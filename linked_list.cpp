@@ -17,6 +17,7 @@ int Linked_List::get_length() const {
 }
 
 void Linked_List::print() const {
+    std::cout << "Your linked list is: ";
     if(length > 0) {
         Node *node_ptr = head;
         for(node_ptr = head; node_ptr != NULL; node_ptr=node_ptr->next)
@@ -128,8 +129,7 @@ void Linked_List::merge(Linked_List& list, int l, int m, int r) {
         if (L[i] <= R[j]) {
             (*get_node_ptr(k))->val = L[i];
             i++;
-        }
-        else {
+        } else {
             (*get_node_ptr(k))->val = R[j];
             j++;
         }
@@ -178,4 +178,21 @@ void Linked_List::sort_ascending() {
 
 void Linked_List::sort_descending() {
     selectionSort(length);
+}
+
+int Linked_List::prime_nums(Linked_List& list) {
+    int num_primes = 0;
+    for(int i = 0; i < length; i++)
+        if(is_prime(list[i]))
+            num_primes++;
+    return num_primes;
+}
+
+bool Linked_List::is_prime(int n) {
+    if (n <= 1)
+        return false;
+    for (int i = 2; i < n; i++)
+        if (n % i == 0)
+            return false;
+    return true;
 }

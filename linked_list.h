@@ -29,6 +29,8 @@ public:
     void mergeSort(int, int);
     int maxIndex(Linked_List&, int, int);
     void selectionSort(int, int);
+    int prime_nums(Linked_List&);
+    bool is_prime(int);
 };
 
 #endif
