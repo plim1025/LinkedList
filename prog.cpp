@@ -35,7 +35,7 @@ int main() {
 void store_nums(Linked_List& list) {
     std::string another_num = "y";
     while(another_num == "y") {
-        int num = 0;
+        unsigned int num = 0;
         std::cout << "Please enter a number: ";
         std::cin >> num;
         std::cin.ignore();
