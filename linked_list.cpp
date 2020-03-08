@@ -2,20 +2,24 @@
 #include "node.h"
 #include <iostream>
 
+// Linked_List constructor
 Linked_List::Linked_List():length(0), head(nullptr) {
 
 }
 
+// Linked_List destructor
 Linked_List::~Linked_List() {
     Node *node_ptr = head;
     for(node_ptr = head; node_ptr != NULL; node_ptr=node_ptr->next)
         delete node_ptr;
 }
 
+// Returns length of Linked_List
 int Linked_List::get_length() const {
     return length;
 }
 
+// Prints out Linked_List
 void Linked_List::print() const {
     std::cout << "Your linked list is: ";
     if(length > 0) {
@@ -28,6 +32,7 @@ void Linked_List::print() const {
         std::cout << "List is empty" << std::endl;
 }
 
+// Clears Linked_List of all nodes so that it is empty
 void Linked_List::clear() {
     Node *node_ptr = head;
     for(node_ptr = head; node_ptr != NULL; node_ptr=node_ptr->next)
@@ -36,6 +41,7 @@ void Linked_List::clear() {
     length = 0;
 }
 
+// Adds integer to front of Linked_List
 unsigned int Linked_List::push_front(int val) {
     Node *node = new Node(val);
     if(head == nullptr) {
@@ -48,6 +54,7 @@ unsigned int Linked_List::push_front(int val) {
     return length;
 }
 
+// Adds integer to back of Linked_List
 unsigned int Linked_List::push_back(int val) {
     Node *node = new Node(val);
     if(head == nullptr)
@@ -60,11 +67,8 @@ unsigned int Linked_List::push_back(int val) {
     return length;
 }
 
+// Inserts integer at given index of Linked_List
 unsigned int Linked_List::insert(int val, unsigned int index) {
-    if(index > length || index < 0) {
-        std::cout << "Invalid index in insert function of linked list" << std::endl;
-        return length;
-    }
     Node *node = new Node(val);
     if(head == nullptr)
         head = node;
@@ -84,6 +88,7 @@ unsigned int Linked_List::insert(int val, unsigned int index) {
     return length;
 }
 
+// Added functionality to index Linked_List using []
 int Linked_List::operator[](int index) {
     Node *node_ptr = head;
     for(int i = 0; i < index; i++)
@@ -91,6 +96,7 @@ int Linked_List::operator[](int index) {
     return node_ptr->val;
 }
 
+// Returns pointer to node_ptr
 Node** Linked_List::get_node_ptr(int index) {
     Node **node_ptr = &head;
     for(int i = 0; i < index; i++)
@@ -98,12 +104,14 @@ Node** Linked_List::get_node_ptr(int index) {
     return node_ptr;
 }
 
+// Swaps two Node pointers
 void Linked_List::swap_node_pointers(Node *&a, Node *&b) {
     Node *t = a;
     a = b;
     b = t;
 }
 
+// Swaps two Nodes of given indexes
 void Linked_List::swap_nodes(int indexA, int indexB) {
     if(indexA == indexB)
         return;
@@ -113,6 +121,7 @@ void Linked_List::swap_nodes(int indexA, int indexB) {
     swap_node_pointers((*a)->next, (*b)->next);
 }
 
+// Merges given indexes of a list
 void Linked_List::merge(Linked_List& list, int l, int m, int r) {
     int i, j, k;
     int n1 = m - l + 1;
@@ -125,6 +134,11 @@ void Linked_List::merge(Linked_List& list, int l, int m, int r) {
     i = 0;
     j = 0;
     k = l;
+    mergeWhiles(i, n1, j, n2, L, R, k);
+}
+
+// Swaps values of list
+void Linked_List::mergeWhiles(int i, int n1, int j, int n2, int *L, int *R, int k) {
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
             (*get_node_ptr(k))->val = L[i];
@@ -147,6 +161,7 @@ void Linked_List::merge(Linked_List& list, int l, int m, int r) {
     }
 }
 
+// Parent merge function to sort list ascending
 void Linked_List::mergeSort(int left, int right) {
     if (left < right) {
         int middle = left + (right - left) / 2;
@@ -156,6 +171,7 @@ void Linked_List::mergeSort(int left, int right) {
     }
 }
 
+// Returns max index of given list within indexes
 int Linked_List::maxIndex(Linked_List &list, int i, int j) {
     if(i == j)
         return i;
@@ -163,6 +179,7 @@ int Linked_List::maxIndex(Linked_List &list, int i, int j) {
     return (list[i] > list[k]) ? i : k;
 }
 
+// Parent function to sort list descending
 void Linked_List::selectionSort(int n, int index = 0) {
     if(index == n)
         return;
@@ -172,14 +189,17 @@ void Linked_List::selectionSort(int n, int index = 0) {
     selectionSort(n, index + 1);
 }
 
+// Sorts list ascending with merge sort
 void Linked_List::sort_ascending() {
     mergeSort(0, length - 1);
 }
 
+// Sorts list descending with selection sort
 void Linked_List::sort_descending() {
     selectionSort(length);
 }
 
+// Returns number of prime numbers in list
 int Linked_List::prime_nums(Linked_List& list) {
     int num_primes = 0;
     for(int i = 0; i < length; i++)
@@ -188,6 +208,7 @@ int Linked_List::prime_nums(Linked_List& list) {
     return num_primes;
 }
 
+// Determines if given integer is prime or not
 bool Linked_List::is_prime(int n) {
     if (n <= 1)
         return false;

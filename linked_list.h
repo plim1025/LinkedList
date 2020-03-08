@@ -26,6 +26,7 @@ public:
     void sort_descending();
     void num_primes();
     void merge(Linked_List&, int, int, int);
+    void mergeWhiles(int i, int n1, int j, int n2, int *L, int *R, int k);
     void mergeSort(int, int);
     int maxIndex(Linked_List&, int, int);
     void selectionSort(int, int);
